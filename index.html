@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parrillada MoroMoro | El Sabor de las Brasas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-m">Moro</span><span class="logo-text">Moro</span>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="#" class="nav-link active" onclick="cambiarVista('vista-inicio', this)">Inicio</a></li>
+                    <li><a href="#" class="nav-link" onclick="cambiarVista('vista-menu', this)">Nuestro Menú</a></li>
+                    <li><a href="#" class="nav-link" onclick="cambiarVista('vista-nosotros', this)">La Tradición</a></li>
+                    <li><a href="#" class="nav-link" onclick="cambiarVista('vista-contacto', this)">Contacto</a></li>
+                </ul>
+            </div>
+            <button class="btn-delivery" onclick="openModal('Servicio a Domicilio', 'Redirigiendo a nuestro WhatsApp oficial...')">
+                <i class="fa-solid fa-motorcycle"></i> Pide en Línea
+            </button>
+        </div>
+    </nav>
+
+    <!-- ================= CONTENEDOR DE VISTAS ================= -->
+    <main style="margin-top: 80px;">
+
+        <!-- VISTA 1: INICIO (VIDEOS LOCALES SIN CARPETA) -->
+        <div id="vista-inicio" class="vista-seccion activa">
+            <section class="hero-section" id="heroBackground">
+                <div class="video-background-container">
+                    <video class="hero-video active" autoplay muted playsinline>
+                        <source src="video1.mp4" type="video/mp4">
+                    </video>
+                    <video class="hero-video" autoplay muted playsinline>
+                        <source src="video2.mp4" type="video/mp4">
+                    </video>
+                    <video class="hero-video" autoplay muted playsinline>
+                        <source src="video3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="hero-badge"><i class="fa-solid fa-fire"></i> Calidad Premium</span>
+                    <h1>Los mejores cortes <br> directos al carbón</h1>
+                    <p>Descubre el auténtico sabor de la carne asada a la perfección.</p>
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                        <button class="btn-secondary" onclick="cambiarVista('vista-menu', document.querySelectorAll('.nav-link')[1])">Ver el Menú</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="promo-section">
+                <div class="promo-container">
+                    <div class="promo-text">
+                        <span class="promo-tag">Oferta Especial</span>
+                        <h2>Jueves de<br>Brasas Locas</h2>
+                        <p>Descuento explosivo en todos nuestros combos familiares. Incluye guarniciones ilimitadas.</p>
+                        <button class="btn-secondary" onclick="openModal('Promo Activada', 'Presenta este mensaje al mesero.')">Reclamar Oferta</button>
+                    </div>
+                    <div class="promo-badge">
+                        <div class="badge-circle">-20% <span class="off">OFF</span></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VISTA 2: MENÚ -->
+        <div id="vista-menu" class="vista-seccion">
+            <section class="container">
+                <div class="section-title">
+                    <h2>Nuestra Parrilla</h2>
+                    <p class="subtitle">Selecciona tu antojo de hoy</p>
+                </div>
+                
+                <div class="categories-grid">
+                    <div class="category-card" onclick="filterMenu('todos')">
+                        <i class="fa-solid fa-utensils category-icon" style="color: var(--fire-orange);"></i>
+                        <p>Todo el Menú</p>
+                    </div>
+                    <div class="category-card" onclick="filterMenu('cortes')">
+                        <i class="fa-solid fa-fire-burner category-icon" style="color: var(--gold);"></i>
+                        <p>Cortes Premium</p>
+                    </div>
+                    <div class="category-card" onclick="filterMenu('combos')">
+                        <i class="fa-solid fa-burger category-icon" style="color: #ff6b35;"></i>
+                        <p>Combos</p>
+                    </div>
+                    <div class="category-card" onclick="filterMenu('bebidas')">
+                        <i class="fa-solid fa-wine-glass category-icon" style="color: #4cc9f0;"></i>
+                        <p>Bebidas</p>
+                    </div>
+                </div>
+
+                <div id="products-container" class="products-grid"></div>
+            </section>
+        </div>
+
+        <!-- VISTA 3: LA TRADICIÓN -->
+        <div id="vista-nosotros" class="vista-seccion">
+            <section class="personal-section" style="min-height: 85vh; display: flex; align-items: center;">
+                <div class="personal-container" style="width: 100%;">
+                    <div class="personal-text-side">
+                        <span class="personal-tag">Nuestra Historia</span>
+                        <h2>Maestros<br>del Fuego</h2>
+                        <p class="personal-desc">Seleccionamos los mejores cortes de carne madurada y utilizamos carbón de leña artesanal para garantizar ese toque ahumado.</p>
+                        <div class="logros-grid">
+                            <div class="logro-item">
+                                <span class="logro-number">10+</span>
+                                <h4>Años asando</h4>
+                            </div>
+                            <div class="logro-item">
+                                <span class="logro-number">5k</span>
+                                <h4>Clientes Felices</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="personal-image-side">
+                        <div class="fire-glow-overlay"></div>
+                        <img src="parrillero.jpg" alt="Parrillero">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VISTA 4: CONTACTO -->
+        <div id="vista-contacto" class="vista-seccion">
+            <footer style="min-height: 85vh; display: flex; align-items: center; border-top: none;">
+                <div class="footer-container" style="width: 100%;">
+                    <div class="footer-info">
+                        <h3>Parrillada MoroMoro</h3>
+                        <p><i class="fa-solid fa-location-dot" style="color: var(--fire-orange);"></i> Av. Las Brasas y Fuego, Guayaquil</p>
+                        <p><i class="fa-solid fa-phone" style="color: var(--fire-orange);"></i> +593 99 999 9999</p>
+                        <p><i class="fa-solid fa-envelope" style="color: var(--fire-orange);"></i> reservas@moromoro.com</p>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Síguenos</h4>
+                        <p><i class="fa-brands fa-instagram"></i> @ParrilladaMoroMoro</p>
+                        <p><i class="fa-brands fa-facebook"></i> MoroMoro Parrilla</p>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Horarios</h4>
+                        <p>Mar - Jue: 12:00 PM - 10:00 PM</p>
+                        <p>Vie - Dom: 12:00 PM - 11:30 PM</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </main>
+
+    <!-- Modal Base -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="font-family: var(--font-title); font-size: 32px; color: var(--fire-orange); margin-bottom: 15px; text-transform: uppercase;">Título</h2>
+            <p id="modalDescription" style="color: var(--text-main); font-size: 16px; line-height: 1.5; margin-bottom: 25px;">Descripción</p>
+            <button class="btn-secondary" onclick="closeModal()">Entendido</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
